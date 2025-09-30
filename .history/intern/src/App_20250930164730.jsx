@@ -1,0 +1,33 @@
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
+import Home from "./home/home";
+import Homepage from "./Product/homepage";
+import About from "./Product/about";
+
+export default function App() {
+  const route = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+      children: [
+        {
+          index: true,
+          element: <Navigate to="home" replace />,
+        },
+        {
+          path: "home",
+          element: <Homepage />,
+        },
+        {
+          path: "about",
+          element: <About />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={route} />;
+}
